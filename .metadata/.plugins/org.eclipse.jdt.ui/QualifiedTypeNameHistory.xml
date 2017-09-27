@@ -1,2 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<qualifiedTypeNameHistroy/>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="com.badlogic.gdx.graphics.g2d.BitmapFont"/>
+<fullyQualifiedTypeName name="com.badlogic.gdx.Input.Keys"/>
+<fullyQualifiedTypeName name="com.badlogic.gdx.graphics.Texture"/>
+<fullyQualifiedTypeName name="com.badlogic.gdx.math.Rectangle"/>
+<fullyQualifiedTypeName name="com.badlogic.gdx.graphics.g3d.particles.influencers.ColorInfluencer.Random"/>
+<fullyQualifiedTypeName name="com.badlogic.gdx.math.MathUtils"/>
+<fullyQualifiedTypeName name="com.badlogic.gdx.graphics.Color"/>
+</qualifiedTypeNameHistroy>
