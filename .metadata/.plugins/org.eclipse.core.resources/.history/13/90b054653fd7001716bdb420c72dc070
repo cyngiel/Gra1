@@ -1,0 +1,126 @@
+package com.mygdx.gra1;
+
+import java.util.ArrayList;
+
+import com.badlogic.gdx.ApplicationAdapter;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.MathUtils;
+
+
+public class ImgSequence extends ApplicationAdapter{
+	
+	private SpriteBatch batch;
+	private Texture texture;
+	ArrayList<Texture> list = new ArrayList<Texture>();
+	String path, name, type;
+	int n;
+	float delta = 0;
+	public ImgSequence(String name, int n, String type){
+		this.name = name;
+		this.n = n;
+		this.type = type;
+		
+		create();
+	}
+	
+	public ImgSequence(String folder1, String name, int n, String type){
+		this.name = folder1 + "/" + name;
+		this.n = n;
+		this.type = type;
+		
+		create();
+	}
+
+	public ImgSequence(String folder1, String folder2, String name, int n, String type){
+		this.name = folder1 + "/" + folder2 + "/" + name;
+		this.n = n;
+		this.type = type;
+		
+		create();
+	}
+	
+	public ImgSequence(String folder1, String folder2, String folder3, String name, int n, String type){
+		this.name = folder1 + "/" + folder2 + "/" + folder3 + "/" + name;
+		this.n = n;
+		this.type = type;
+		
+		create();
+	}
+	
+	
+	void imgList(){
+		int i = 0;
+		
+		for(i = 0; i < n; i++){
+			path = name + i + "." + type;
+			list.add( texture = new Texture(path) );
+		}
+	}
+
+	ArrayList<Texture> getSequence(){
+		return list;
+	}
+	
+	Texture getSequenceFrame(int n ){
+		return list.get(n);
+	}
+	
+	
+	@Override
+	public void create () {
+		imgList();
+		batch = new SpriteBatch();
+	}
+	
+	
+	
+	
+	
+	int zz, f = 0;
+	boolean ison = true;
+	@Override
+	public void render () {
+		if(ison){
+			zz = n;
+			Gdx.gl.glClearColor(0, 1, 0, 1);
+			ison = false;
+		}
+		
+		batch.begin();
+		
+		delta += Gdx.graphics.getDeltaTime();
+		
+		if(delta >= 0.041){
+			delta = 0;
+			
+			
+		
+			if(f == 0)
+			{
+				zz--;
+				Gdx.gl.glClearColor(0, 1, 0, 1);
+				batch.draw(list.get(zz), 100, -200);
+				
+				System.out.println(n +","+ zz + f);
+				if(zz == 0) f = 1;
+			}
+			
+		if(f == 1)
+		{
+			Gdx.gl.glClearColor(1, 0, 0, 1);
+			batch.draw(list.get(zz), 100, -200);
+			zz++;
+			System.out.println(n +","+ zz + f);
+			if(zz == 4) f = 0;
+		}
+		
+	}
+		batch.end();
+		
+		
+	}
+	
+}
